@@ -1,8 +1,8 @@
 Vulcanize
 ==============================================================================
-Just include an `imports.html` file anywhere available to the client, that contains the html imports that would normally go inside your `<head>` tag.
+1. Ensure all your components are located somewhere under your public directory.
+2. Include an `imports.html` file anywhere available to the client, that contains the html imports that would normally go inside your `<head>` tag.
 
-## Example
 ````
 <!-- Core Components -->
 <link rel="import" href="/components/core-animation/core-animation.html">
@@ -19,8 +19,6 @@ Just include an `imports.html` file anywhere available to the client, that conta
 ...
 ````
 
-Running your app in development as usual will result in the contents of imports.html being added to your `<head>` tag, resulting in multiple subsequent http requests (good in development).
+- Running your app in development as usual will result in the contents of `imports.html` being added to your `<head>` tag, resulting in multiple subsequent HTTP requests (good in development - debugging).
 
-Running `meteor`, `meteor build`, `modulus deploy`, etc with the `VULCANIZE=true` environment variable set will result in all your html imports being vulcanized or concatenated into a single html import (good in production).
-
-Ex: `VULCANIZE=true meteor`, `VULCANIZE=true modulus deploy`
+- Running `meteor`, `meteor build`, `modulus deploy`, etc with the `VULCANIZE=true` environment variable set will result in all your html imports being vulcanized or concatenated into a single html import (good in production).  The resulting file will be called `vulcanized.html`, which will be automatically added to your `<head>` tag.  For example, `VULCANIZE=true meteor`, `VULCANIZE=true modulus deploy`.

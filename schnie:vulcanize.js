@@ -5,10 +5,10 @@ var handler = function(compileStep) {
   var importsHtml = compileStep.read().toString('utf8');
 
   if (process.env.VULCANIZE) {
-    log('Vulcanizing imports.html...');
+    log('Vulcanizing imports...');
     vulcanize(compileStep, importsHtml);
   } else {
-    log('Adding imports.html to index.html...');
+    log('Adding all imports...');
     addImports(compileStep, importsHtml);
   }
 
