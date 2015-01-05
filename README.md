@@ -1,5 +1,8 @@
 Vulcanize
 ==============================================================================
+This package a meteor build plugin that wraps the [vulcanize](https://www.npmjs.com/package/vulcanize) npm package, which is used to process web components into a single output file.
+
+### Usage
 1. Ensure all your components are located somewhere under your public directory.
 2. Include an `imports.html` file anywhere available to the client, that contains the html imports that would normally go inside your `<head>` tag.
 
