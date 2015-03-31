@@ -20,9 +20,7 @@ var vulcanize = function(compileStep, importsHtml) {
 
   var vulcanOutputHandler = function(filename, data) {
 
-    var md5Hash = crypto.createHash('md5');
-    md5Hash.update(data);
-    filenameHash = md5Hash.digest('hex');
+    var filenameHash = crypto.createHash('md5').update(data).digest('hex');
 
     compileStep.addAsset({
       path: '/vulcanized-' + filenameHash + '.html',
