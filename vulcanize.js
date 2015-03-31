@@ -1,5 +1,5 @@
 var vulcan = Npm.require('vulcanize');
-var crypto = require('crypto');
+var crypto = Npm.require('crypto');
 
 var _ = Npm.require('underscore');
 
@@ -20,9 +20,9 @@ var vulcanize = function(compileStep, importsHtml) {
 
   var vulcanOutputHandler = function(filename, data) {
 
-    var filenameHash = crypto.createHash('md5');
-    filenameHash.update(data);
-    filenameHash.digest('hex');
+    var md5Hash = crypto.createHash('md5');
+    md5Hash.update(data);
+    filenameHash = md5Hash.digest('hex');
 
     compileStep.addAsset({
       path: '/vulcanized-' + filenameHash + '.html',
