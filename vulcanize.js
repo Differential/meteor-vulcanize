@@ -1,4 +1,6 @@
 var vulcan = Npm.require('vulcanize');
+var crypto = Npm.require('crypto');
+
 var _ = Npm.require('underscore');
 
 var handler = function(compileStep) {
@@ -17,14 +19,17 @@ var handler = function(compileStep) {
 var vulcanize = function(compileStep, importsHtml) {
 
   var vulcanOutputHandler = function(filename, data) {
+
+    var filenameHash = crypto.createHash('md5').update(data).digest('hex');
+
     compileStep.addAsset({
-      path: '/vulcanized.html',
+      path: '/vulcanized-' + filenameHash + '.html',
       data: data
     });
 
     compileStep.addHtml({
       section: 'head',
-      data: '<link rel=\'import\' href=\'/vulcanized.html\'>'
+      data: "<link rel='import' href='/vulcanized-" + filenameHash + ".html'>"
     });
   };
 
