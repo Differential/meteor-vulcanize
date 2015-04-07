@@ -25,3 +25,5 @@ This package a meteor build plugin that wraps the [vulcanize](https://www.npmjs.
 - Running your app in development as usual will result in the contents of `imports.html` being added to your `<head>` tag, resulting in multiple subsequent HTTP requests (good in development - debugging).
 
 - Running `meteor`, `meteor build`, `modulus deploy`, etc with the `VULCANIZE=true` environment variable set will result in all your html imports being vulcanized or concatenated into a single html import (good in production).  The resulting file will be called `vulcanized.html`, which will be automatically added to your `<head>` tag.  For example, `VULCANIZE=true meteor`, `VULCANIZE=true modulus deploy`.
+
+- Setting the `CDN_PREFIX` environment variable will prepend the string to the beginning of the file path that is inserted into your HTML's `<head>` tag.

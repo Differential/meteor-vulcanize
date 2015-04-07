@@ -1,5 +1,6 @@
 var vulcan = Npm.require('vulcanize');
 var crypto = Npm.require('crypto');
+var url = Npm.require('url');
 
 var _ = Npm.require('underscore');
 
@@ -21,15 +22,20 @@ var vulcanize = function(compileStep, importsHtml) {
   var vulcanOutputHandler = function(filename, data) {
 
     var filenameHash = crypto.createHash('md5').update(data).digest('hex');
+    var filePath = '/vulcanized-' + filenameHash + '.html';
 
     compileStep.addAsset({
-      path: '/vulcanized-' + filenameHash + '.html',
+      path: filePath,
       data: data
     });
 
+    if (_.isString(process.env.CDN_PREFIX)) {
+      filePath = url.resolve(process.env.CDN_PREFIX, filePath);
+    }
+
     compileStep.addHtml({
       section: 'head',
-      data: "<link rel='import' href='/vulcanized-" + filenameHash + ".html'>"
+      data: '<link rel="import" href="' + filePath + '">'
     });
   };
 
