@@ -11,5 +11,5 @@ Package.registerBuildPlugin({
   sources: [
     'vulcanize.js'
   ],
-  npmDependencies: {'vulcanize': '0.7.1'}
+  npmDependencies: {'vulcanize': '1.8.1'}
 });
