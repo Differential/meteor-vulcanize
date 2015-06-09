@@ -8,10 +8,10 @@ var handler = function(compileStep) {
   var importsHtml = compileStep.read().toString('utf8');
 
   if (process.env.VULCANIZE) {
-    log('Vulcanizing imports...');
+    log('Using vulcanized import');
     vulcanize(compileStep, importsHtml);
   } else {
-    log('Adding all imports...');
+    log('Using individual imports');
     addImports(compileStep, importsHtml);
   }
 
@@ -63,7 +63,7 @@ var addImports = function(compileStep, importsHtml) {
 
 var log = function() {
   args = _.values(arguments);
-  args.unshift("Vulcanize:");
+  args.unshift("=> ");
   console.log.apply(this, args);
 };
 
