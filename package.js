@@ -1,7 +1,7 @@
 Package.describe({
   name: 'differential:vulcanize',
   summary: 'Vulcanize',
-  version: '0.0.6',
+  version: '0.0.7',
   git: 'https://github.com/Differential/meteor-vulcanize'
 });
 
