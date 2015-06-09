@@ -63,7 +63,7 @@ var addImports = function(compileStep, importsHtml) {
 
 var log = function() {
   args = _.values(arguments);
-  args.unshift("=> ");
+  args.unshift("=> Vulcanize:");
   console.log.apply(this, args);
 };
 
