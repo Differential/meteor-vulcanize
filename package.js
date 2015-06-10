@@ -1,7 +1,7 @@
 Package.describe({
   name: 'differential:vulcanize',
   summary: 'Vulcanize',
-  version: '0.0.8',
+  version: '1.0.0',
   git: 'https://github.com/Differential/meteor-vulcanize'
 });
 
@@ -11,5 +11,5 @@ Package.registerBuildPlugin({
   sources: [
     'vulcanize.js'
   ],
-  npmDependencies: {'vulcanize': '1.8.1'}
+  npmDependencies: {'vulcanize': '1.9.1'}
 });
