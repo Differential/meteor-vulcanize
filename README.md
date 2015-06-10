@@ -1,5 +1,7 @@
 Vulcanize
 ==============================================================================
+Warning: API Change for version 1.0.0.
+
 This package a meteor build plugin that wraps the [vulcanize](https://www.npmjs.com/package/vulcanize) npm package, which is used to process web components into a single output file.
 
 ### Usage
