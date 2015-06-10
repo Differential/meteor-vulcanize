@@ -3,7 +3,7 @@ Vulcanize
 This package a meteor build plugin that wraps the [vulcanize](https://www.npmjs.com/package/vulcanize) npm package, which is used to process web components into a single output file.
 
 ### Usage
-1. Ensure all your components are located somewhere under your public directory.
+1. Ensure all your components are located somewhere under your public directory. (via bower, zip, etc)
 2. Include an `vulcanize.json` file in the root of your project.  This file will optionally define a path to the polyfill and paths to html imports for your components.  For Example:
 
 ````
@@ -15,6 +15,7 @@ This package a meteor build plugin that wraps the [vulcanize](https://www.npmjs.
     ]
 }
 ````
+- By specifying a path to the polyfill we can ensure that it is injected into the bundle before any imports.
 
 - Running your app in development as usual will result in individual imports being added to your `<head>` tag, resulting in multiple subsequent HTTP requests (good in development - debugging).
 
