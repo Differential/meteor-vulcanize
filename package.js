@@ -7,7 +7,9 @@ Package.describe({
 
 Package.registerBuildPlugin({
   name: 'vulcanize',
-  use: [],
+  use: [
+    "underscore"
+  ],
   sources: [
     'vulcanize.js'
   ],

@@ -2,8 +2,6 @@ var vulcan = Npm.require('vulcanize');
 var crypto = Npm.require('crypto');
 var url = Npm.require('url');
 var fs = Npm.require('fs');
-var _ = Npm.require('underscore');
-
 
 /**
  * Vulcanize now requires a target input file.
