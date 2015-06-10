@@ -16,11 +16,11 @@ var tmpPath = tmpDir + '/' + tmpFile;
 /**
  * Log
  */
-var log = function() {
+function log() {
   args = _.values(arguments);
   args.unshift("=> Vulcanize:");
   console.log.apply(this, args);
-};
+}
 
 /**
  * Get script tag with specified path.
