@@ -11,6 +11,7 @@ This package a meteor build plugin that wraps the [vulcanize](https://www.npmjs.
 ````
 {
     "polyfill": "/bower_components/webcomponentsjs/webcomponents.min.js",
+    "useShadowDom": true, // optional, defaults to shady dom (polymer default)
     "imports": [
         "/bower_components/paper-button/paper-button.html",
         "/bower_components/paper-checkbox/paper-checkbox.html"
@@ -18,6 +19,8 @@ This package a meteor build plugin that wraps the [vulcanize](https://www.npmjs.
 }
 ````
 - By specifying a path to the polyfill we can ensure that it is injected into the bundle before any imports.
+
+- By setting `useShadowDom` to true, we configure polymer to opt out of shady dom and use full shadow dom.  This is pretty much required at the moment unless you only use polymer elements as leaf nodes.  Any light dom (child elements) that gets rendered by blaze, react, etc will not be accounted for otherwise.
 
 - Running your app in development as usual will result in individual imports being added to your `<head>` tag, resulting in multiple subsequent HTTP requests (good in development - debugging).
 

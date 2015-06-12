@@ -37,6 +37,16 @@ function linkTag(path) {
 }
 
 /**
+ * Add config for dom mode to head.
+ */
+function addShadowDomConfig(compileStep) {
+  compileStep.addHtml({
+    section: 'head',
+    data: '<script> window.Polymer = {dom: "shadow"}; </script>'
+  });
+}
+
+/**
  * Add webcomponentsjs script to head.
  * @todo read first line and check for script tag
  */
@@ -112,6 +122,11 @@ Plugin.registerSourceHandler("json", function(compileStep) {
     // Add polyfill to html if defined.
     if (_.isString(json.polyfill)) {
       addPolyfillTag(compileStep, json.polyfill);
+    }
+
+    // Optionally opt into shadow dom, rather than shady dom.
+    if (json.useShadowDom) {
+      addShadowDomConfig(compileStep);
     }
 
     // Add imports if defined.
