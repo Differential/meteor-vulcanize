@@ -110,10 +110,8 @@ function individualImports(compileStep, imports) {
 /**
  * Register appropriate plugin.
  */
-Plugin.registerSourceHandler("json", function(compileStep) {
-  // Can't register on full file name for some reason, so need to filter through
-  // for our file.
-  if (compileStep.pathForSourceMap === "vulcanize.json"
+Plugin.registerSourceHandler("vulcanize", function(compileStep) {
+  if (compileStep.inputPath === "config.vulcanize"
     && compileStep.arch === "web.browser") {
     
     // Get JSON file.
@@ -137,5 +135,7 @@ Plugin.registerSourceHandler("json", function(compileStep) {
       log("Importing individual files...");
       individualImports(compileStep, json.imports);
     }
+  } else if (compileStep.arch === "web.browser") {
+    log("File "+compileStep.inputPath+" ignored");
   }
 });
