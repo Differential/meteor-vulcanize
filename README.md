@@ -6,7 +6,7 @@ This package a meteor build plugin that wraps the [vulcanize](https://www.npmjs.
 
 ### Usage
 1. Ensure all your components are located somewhere under your public directory. (via bower, zip, etc)
-2. Include an `vulcanize.json` file in the root of your project.  This file will optionally define a path to the polyfill and paths to html imports for your components.  For Example:
+2. Include a `config.vulcanize` file in the root of your project.  This file will optionally define a path to the polyfill and paths to html imports for your components.  For Example:
 
 ````
 {
