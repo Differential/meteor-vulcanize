@@ -15,3 +15,8 @@ Package.registerBuildPlugin({
   ],
   npmDependencies: {'vulcanize': '1.9.1'}
 });
+
+Package.onUse(function (api) {
+  api.use('underscore');
+  api.use('isobuild:compiler-plugin@1.0.0');
+});
