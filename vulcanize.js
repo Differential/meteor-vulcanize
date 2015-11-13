@@ -1,5 +1,6 @@
 var vulcan = Npm.require('vulcanize');
 var crypto = Npm.require('crypto');
+var Future = Npm.require('fibers/future');
 var url = Npm.require('url');
 var fs = Npm.require('fs');
 
@@ -72,12 +73,13 @@ function addImportTag(file, path) {
  * Vulcanize all files and add output file to head.
  */
 function vulcanizeImports(file, imports) {
+  var future = new Future();
+
   var tags = _.map(imports, function(path) {
     return linkTag(path);
   });
 
   fs.writeFileSync(tmpPath, tags.join("\n"));
-
   vulcan.setOptions({ abspath: tmpDir });
 
   vulcan.process(tmpFile, function(err, html) {
@@ -95,7 +97,10 @@ function vulcanizeImports(file, imports) {
     }
 
     addImportTag(file, filePath);
+    future.return(true);
   });
+
+  return future.wait();
 }
 
 /**
